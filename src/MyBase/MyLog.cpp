@@ -6,9 +6,8 @@ pns::Int MyLog::LogPlain(const pns::Char * format, ...)
 {
 	Int rst = 0;
 	va_list arglist;
-	__crt_va_start(arglist, format);
+	va_start(arglist, format);
 	rst = vprintf(format, arglist);
-	__crt_va_end(arglist);
 
 	printf("\n");
 	return rst;
@@ -20,9 +19,8 @@ pns::Int MyLog::LogError(const pns::Char * format, ...)
 
 	Int rst = 0;
 	va_list arglist;
-	__crt_va_start(arglist, format);
+	va_start(arglist, format);
 	rst = vprintf(format, arglist);
-	__crt_va_end(arglist);
 
 	printf("\n");
 	return rst;
@@ -34,9 +32,8 @@ pns::Int MyLog::LogDebug(const pns::Char * format, ...)
 
 	Int rst = 0;
 	va_list arglist;
-	__crt_va_start(arglist, format);
+	va_start(arglist, format);
 	rst = vprintf(format, arglist);
-	__crt_va_end(arglist);
 	
 	printf("\n");
 	return rst;

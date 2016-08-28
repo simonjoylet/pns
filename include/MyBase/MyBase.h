@@ -2,6 +2,7 @@
 #define MY_BASE_H
 
 #include <stdio.h>
+#include <stdarg.h>
 #include <time.h>
 
 #ifndef MY_BASE_API
