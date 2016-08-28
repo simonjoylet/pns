@@ -14,6 +14,7 @@ namespace pns
 	class MyLog;
 
 #include "MyBase/MyBasicType.h"
+#include "MyBase/MySynch.h"
 #include "MyBase/MyLog.h"
 
 };

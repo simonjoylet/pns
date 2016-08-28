@@ -22,6 +22,7 @@
     <ClInclude Include="..\..\..\include\MyBase\MyBase.h" />
     <ClInclude Include="..\..\..\include\MyBase\MyBasicType.h" />
     <ClInclude Include="..\..\..\include\MyBase\MyLog.h" />
+    <ClInclude Include="..\..\..\include\MyBase\MySynch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp" />
