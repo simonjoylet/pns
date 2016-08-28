@@ -20,9 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\MyBase\MyBase.h" />
+    <ClInclude Include="..\..\..\include\MyBase\MyBasicType.h" />
+    <ClInclude Include="..\..\..\include\MyBase\MyLog.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp" />
+    <ClCompile Include="..\..\..\src\MyBase\MyLog.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6916972E-8BEF-4171-BE9A-A51539B3E658}</ProjectGuid>

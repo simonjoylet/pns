@@ -18,9 +18,18 @@
     <ClInclude Include="..\..\..\include\MyBase\MyBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\MyBase\MyLog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\MyBase\MyBasicType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MyBase\MyLog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
