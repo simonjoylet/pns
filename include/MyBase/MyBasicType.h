@@ -5,6 +5,7 @@
 * 这里定义基本数据类型，以适应不同的平台。
 */
 
+typedef void Void;
 typedef bool Bool;
 typedef char Char;
 typedef unsigned char Uchar;

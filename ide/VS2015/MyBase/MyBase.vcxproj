@@ -23,10 +23,12 @@
     <ClInclude Include="..\..\..\include\MyBase\MyBasicType.h" />
     <ClInclude Include="..\..\..\include\MyBase\MyLog.h" />
     <ClInclude Include="..\..\..\include\MyBase\MySynch.h" />
+    <ClInclude Include="..\..\..\include\MyBase\MyThreadBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp" />
     <ClCompile Include="..\..\..\src\MyBase\MyLog.cpp" />
+    <ClCompile Include="..\..\..\src\MyBase\MyThreadBase.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6916972E-8BEF-4171-BE9A-A51539B3E658}</ProjectGuid>

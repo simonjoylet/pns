@@ -11,10 +11,12 @@
 
 namespace pns
 {
+	class MyThreadBase;
 	class MyLog;
 
 #include "MyBase/MyBasicType.h"
 #include "MyBase/MySynch.h"
+#include "MyBase/MyThreadBase.h"
 #include "MyBase/MyLog.h"
 
 };
