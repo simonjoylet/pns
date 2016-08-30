@@ -20,9 +20,16 @@ MyThreadBase::MyThreadBase()
 	m_threadHandle = NULL;
 }
 
-pns::Bool MyThreadBase::Start()
+pns::Bool MyThreadBase::Start(pns::Bool isSuspend)
 {
-	m_threadHandle = (HANDLE)_beginthreadex(NULL, 0, ThreadStartAddr, this, 0, &m_threadId);
-
+	if (isSuspend)
+	{
+		m_threadHandle = (HANDLE)_beginthreadex(NULL, 0, ThreadStartAddr, this, CREATE_SUSPENDED, &m_threadId);
+	}
+	else
+	{
+		m_threadHandle = (HANDLE)_beginthreadex(NULL, 0, ThreadStartAddr, this, 0, &m_threadId);
+	}
+	return (m_threadHandle != 0); // 线程创建失败时会返回0 
 }
 
