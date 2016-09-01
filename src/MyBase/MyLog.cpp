@@ -13,6 +13,19 @@ pns::Int MyLog::LogPlain(const pns::Char * format, ...)
 	return rst;
 }
 
+pns::Int MyLog::LogWarning(const pns::Char * format, ...)
+{
+	printf("[WARNING]: ");
+
+	Int rst = 0;
+	va_list arglist;
+	va_start(arglist, format);
+	rst = vprintf(format, arglist);
+
+	printf("\n");
+	return rst;
+}
+
 pns::Int MyLog::LogError(const pns::Char * format, ...)
 {
 	printf("[ERROR]: ");

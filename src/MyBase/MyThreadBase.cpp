@@ -3,12 +3,10 @@
 #include <process.h>
 using namespace pns;
 
-pns::Uint __stdcall pns::ThreadStartAddr(pns::Void * param)
+pns::Uint __stdcall ThreadStartAddr(pns::Void * param)
 {
 	MyThreadBase * theThread = (MyThreadBase *)param;
-	theThread->m_isStoped = false;
 	pns::Uint exitCode = theThread->Run();
-	theThread->m_isStoped = true;
 	return exitCode;
 }
 
@@ -16,7 +14,7 @@ MyThreadBase::MyThreadBase()
 {
 	m_isStoped = true;
 	m_isSuspend = false;
-	m_isToStop = false;
+	m_toStop = false;
 
 	m_threadId = 0;
 	m_threadHandle = NULL;
@@ -28,6 +26,7 @@ MyThreadBase::~MyThreadBase()
 	{
 		Stop();
 	}
+
 	CloseHandle(m_threadHandle);
 	m_threadHandle = NULL;
 	m_threadId = 0;
@@ -35,6 +34,14 @@ MyThreadBase::~MyThreadBase()
 
 pns::Bool MyThreadBase::Start(pns::Bool isSuspend)
 {
+	// 如果已经启动过了，就不再启动。
+	if (!m_isStoped)
+	{
+		return true;
+	}
+
+	// 创建进程
+	m_toStop = false;
 	if (isSuspend)
 	{
 		m_threadHandle = (HANDLE)_beginthreadex(NULL, 0, ThreadStartAddr, this, CREATE_SUSPENDED, &m_threadId);
@@ -44,7 +51,26 @@ pns::Bool MyThreadBase::Start(pns::Bool isSuspend)
 	{
 		m_threadHandle = (HANDLE)_beginthreadex(NULL, 0, ThreadStartAddr, this, 0, &m_threadId);
 	}
-	return (m_threadHandle != 0); // 线程创建失败时会返回0 
+
+	// 判断是否创建成功
+	if (m_threadHandle == NULL)
+	{
+		// 重置线程状态
+		m_isStoped = true;
+		m_isSuspend = false;
+		m_toStop = false;
+		m_threadId = 0;
+
+		MyLog::LogError("线程创建失败");
+
+		return false;
+	}
+	else
+	{
+		// 设置线程状态
+		m_isStoped = false;
+		return true;
+	}
 }
 
 pns::Bool MyThreadBase::Join(pns::Int waitTime /*= -1*/)
@@ -56,7 +82,7 @@ pns::Bool MyThreadBase::Join(pns::Int waitTime /*= -1*/)
 	}
 
 	// 通知线程停止
-	SetToStop(true);
+	m_toStop = true;
 
 	// 等待结果
 	if (waitTime < 0)
@@ -65,6 +91,13 @@ pns::Bool MyThreadBase::Join(pns::Int waitTime /*= -1*/)
 	}
 	if (WaitForSingleObject(m_threadHandle, waitTime) == WAIT_OBJECT_0)
 	{
+		// 重置线程状态
+		CloseHandle(m_threadHandle);
+		m_threadHandle = NULL;
+		m_isStoped = true;
+		m_isSuspend = false;
+		m_toStop = false;
+		m_threadId = 0;
 		return true;
 	}
 	else
@@ -80,15 +113,25 @@ pns::Bool MyThreadBase::Stop()
 	{
 		return true;
 	}
-	//检查线程句柄
+
+	// 检查线程句柄
 	if (!m_threadHandle)
 	{
 		MyLog::LogError("线程句柄为空");
 		return false;
 	}
 
+	// 强行关闭线程
 	m_isStoped = TerminateThread(m_threadHandle, -1) ? true : false;
-
+	if (m_isStoped)
+	{
+		// 重置
+		CloseHandle(m_threadHandle);
+		m_threadHandle = NULL;
+		m_isSuspend = false;
+		m_toStop = false;
+		m_threadId = 0;
+	}
 	return m_isStoped;
 }
 
@@ -97,6 +140,7 @@ pns::Bool MyThreadBase::Suspend()
 	// 检查线程当前状态
 	if (m_isStoped)
 	{
+		MyLog::LogWarning("线程尚未启动");
 		return false;
 	}
 	if (m_isSuspend)
@@ -110,30 +154,42 @@ pns::Bool MyThreadBase::Suspend()
 		MyLog::LogError("线程句柄为空");
 		return false;
 	}
-	m_isSuspend = SuspendThread(m_threadHandle) ? true : false;
+
+	// 暂停线程
+	DWORD rst = SuspendThread(m_threadHandle);
+	m_isSuspend = (rst != 0xFFFFFFFF) ? true : false;
+
 	return m_isSuspend;
 }
 
 pns::Bool MyThreadBase::Resume()
 {
 	// 检查线程状态
+	if (m_isStoped)
+	{
+		MyLog::LogWarning("线程尚未启动");
+		return false;
+	}
+
 	if (!m_isSuspend)
 	{
+		MyLog::LogWarning("线程尚未暂停");
 		return false;
 	}
 
-	//检查句柄
+	// 检查句柄
 	if (!m_threadHandle)
 	{
+		MyLog::LogError("线程句柄为空");
 		return false;
 	}
 
-	m_isSuspend = !ResumeThread(m_threadHandle) ? true : false;
+	// 恢复线程
+	DWORD rst = ResumeThread(m_threadHandle);
 
-	return m_isSuspend;
+	// 因为只会挂起一次，所以只有挂起计数为1时才是恢复线程成功的返回值
+	m_isSuspend = (rst == 1) ? false : true;
+
+	return !m_isSuspend;
 }
 
-pns::Void MyThreadBase::SetToStop(pns::Bool isToStop)
-{
-	m_isToStop = isToStop;
-}
