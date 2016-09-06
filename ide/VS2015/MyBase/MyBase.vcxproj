@@ -21,15 +21,15 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\MyBase\MyBase.h" />
     <ClInclude Include="..\..\..\include\MyBase\MyBasicType.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MyDynamicArray.h" />
     <ClInclude Include="..\..\..\include\MyBase\MyLog.h" />
+    <ClInclude Include="..\..\..\include\MyBase\MySingleton.h" />
     <ClInclude Include="..\..\..\include\MyBase\MySynch.h" />
     <ClInclude Include="..\..\..\include\MyBase\MyThreadBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp" />
-    <ClCompile Include="..\..\..\src\MyBase\MyDynamicArray.cpp" />
     <ClCompile Include="..\..\..\src\MyBase\MyLog.cpp" />
+    <ClCompile Include="..\..\..\src\MyBase\MySingleton.cpp" />
     <ClCompile Include="..\..\..\src\MyBase\MyThreadBase.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
