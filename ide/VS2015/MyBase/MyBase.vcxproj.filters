@@ -30,6 +30,9 @@
     <ClInclude Include="..\..\..\include\MyBase\MyThreadBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\MyBase\MySingleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\MyBase\MyDynamicArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -42,6 +45,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\MyBase\MyThreadBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MyBase\MySingleton.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\MyBase\MyDynamicArray.cpp">

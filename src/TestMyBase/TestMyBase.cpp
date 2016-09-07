@@ -64,12 +64,18 @@ void TestMyThread()
 	MyLog::LogPlain("停止线程测试");
 }
 
+void TestMySingleton()
+{
+	MySingleton * singleton = MySingleton::GetInstance();
+}
+
 int main()
 {
 	// todo, 使用GoogleTest
 	TestMyLog();
 	TestMySynch();
 	TestMyThread();
+	TestMySingleton();
 
 	getchar();
 	return 0;

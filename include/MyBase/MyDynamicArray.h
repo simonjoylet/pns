@@ -6,26 +6,31 @@
 * 预先分配指针空间，然后根据需要分配具体的数据空间，已经分配的数据地址不会变化
 * 时间复杂度：数组随机访问多了一次指针代价，基本可以忽略
 * 空间复杂度：只多了8K的指针空间，代价同样很小
+* 
+* 使用接口还没想好，关键是有删除怎么处理还没想好
+* 或者没有元素删除操作。
 */
 class MyDynamicArray
 {
 private:
 	struct Items
 	{
-		int item[1024];
+		void * item[1024];
 	};
 
 	Items * m_array[2048];
 	pns::Uint m_size;
 
 public:
+	MyDynamicArray();
+	~MyDynamicArray();
 
+	// 设置数组大小
+	pns::Bool SetSize(pns::Int itemCount, pns::Uint itemSize);
+	pns::Bool Realloc(pns::Int itemCount, pns::Uint itemSize);
 
 	// 获取数组元素
-	int & operator [](int index);
-
-	// 申请增加空间
-	pns::Bool Realloc(pns::Uint size);
+	void * operator [](pns::Int index);
 
 	// 获取数组当前大小
 	pns::Uint Size();

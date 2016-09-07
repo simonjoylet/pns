@@ -14,12 +14,14 @@ namespace pns
 	class MyLog;
 	class MyThreadBase;
 	class MyDynamicArray;
+	class MySingleton;
 
 #include "MyBase/MyBasicType.h"
 #include "MyBase/MyLog.h"
 #include "MyBase/MySynch.h"
 #include "MyBase/MyThreadBase.h"
 #include "MyBase/MyDynamicArray.h"
+#include "MyBase/MySingleton.h"
 
 };
 
