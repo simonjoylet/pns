@@ -1,16 +1,17 @@
 #define MY_BASE_API __declspec(dllexport)
-#include "MyBase/MyBase.h"
+#include "MyBase/ThreadBase.h"
+#include "MyBase/Log.h"
 #include <process.h>
 using namespace pns;
 
 pns::Uint __stdcall ThreadStartAddr(pns::Void * param)
 {
-	MyThreadBase * theThread = (MyThreadBase *)param;
+	ThreadBase * theThread = (ThreadBase *)param;
 	pns::Uint exitCode = theThread->Run();
 	return exitCode;
 }
 
-MyThreadBase::MyThreadBase()
+ThreadBase::ThreadBase()
 {
 	m_isStoped = true;
 	m_isSuspend = false;
@@ -20,7 +21,7 @@ MyThreadBase::MyThreadBase()
 	m_threadHandle = NULL;
 }
 
-MyThreadBase::~MyThreadBase()
+ThreadBase::~ThreadBase()
 {
 	if (!Join(1000))
 	{
@@ -32,7 +33,7 @@ MyThreadBase::~MyThreadBase()
 	m_threadId = 0;
 }
 
-pns::Bool MyThreadBase::Start(pns::Bool isSuspend)
+pns::Bool ThreadBase::Start(pns::Bool isSuspend)
 {
 	// 如果已经启动过了，就不再启动。
 	if (!m_isStoped)
@@ -61,7 +62,7 @@ pns::Bool MyThreadBase::Start(pns::Bool isSuspend)
 		m_toStop = false;
 		m_threadId = 0;
 
-		MyLog::LogError("线程创建失败");
+		Log::LogError("线程创建失败");
 
 		return false;
 	}
@@ -73,7 +74,7 @@ pns::Bool MyThreadBase::Start(pns::Bool isSuspend)
 	}
 }
 
-pns::Bool MyThreadBase::Join(pns::Int waitTime /*= -1*/)
+pns::Bool ThreadBase::Join(pns::Int waitTime /*= -1*/)
 {
 	// 判断线程当前状态
 	if (m_isStoped)
@@ -106,7 +107,7 @@ pns::Bool MyThreadBase::Join(pns::Int waitTime /*= -1*/)
 	}
 }
 
-pns::Bool MyThreadBase::Stop()
+pns::Bool ThreadBase::Stop()
 {
 	// 判断线程当前状态
 	if (m_isStoped)
@@ -117,7 +118,7 @@ pns::Bool MyThreadBase::Stop()
 	// 检查线程句柄
 	if (!m_threadHandle)
 	{
-		MyLog::LogError("线程句柄为空");
+		Log::LogError("线程句柄为空");
 		return false;
 	}
 
@@ -135,12 +136,12 @@ pns::Bool MyThreadBase::Stop()
 	return m_isStoped;
 }
 
-pns::Bool MyThreadBase::Suspend()
+pns::Bool ThreadBase::Suspend()
 {
 	// 检查线程当前状态
 	if (m_isStoped)
 	{
-		MyLog::LogWarning("线程尚未启动");
+		Log::LogWarning("线程尚未启动");
 		return false;
 	}
 	if (m_isSuspend)
@@ -151,7 +152,7 @@ pns::Bool MyThreadBase::Suspend()
 	// 检查线程句柄
 	if (!m_threadHandle)
 	{
-		MyLog::LogError("线程句柄为空");
+		Log::LogError("线程句柄为空");
 		return false;
 	}
 
@@ -162,25 +163,25 @@ pns::Bool MyThreadBase::Suspend()
 	return m_isSuspend;
 }
 
-pns::Bool MyThreadBase::Resume()
+pns::Bool ThreadBase::Resume()
 {
 	// 检查线程状态
 	if (m_isStoped)
 	{
-		MyLog::LogWarning("线程尚未启动");
+		Log::LogWarning("线程尚未启动");
 		return false;
 	}
 
 	if (!m_isSuspend)
 	{
-		MyLog::LogWarning("线程尚未暂停");
+		Log::LogWarning("线程尚未暂停");
 		return false;
 	}
 
 	// 检查句柄
 	if (!m_threadHandle)
 	{
-		MyLog::LogError("线程句柄为空");
+		Log::LogError("线程句柄为空");
 		return false;
 	}
 

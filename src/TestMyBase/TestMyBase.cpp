@@ -4,9 +4,9 @@ using namespace pns;
 void TestMyLog()
 {
 	// 测试MyLog
-	MyLog::LogDebug("This is a debug info");
-	MyLog::LogError("我去，又错了，咦，我为什么要说又呢");
-	MyLog::LogPlain("人家只是一个普通的日志");
+	Log::LogDebug("This is a debug info");
+	Log::LogError("我去，又错了，咦，我为什么要说又呢");
+	Log::LogPlain("人家只是一个普通的日志");
 }
 
 void TestMySynch()
@@ -21,7 +21,7 @@ void TestMySynch()
 
 void TestMyThread()
 {
-	class TestThread : public MyThreadBase
+	class TestThread : public ThreadBase
 	{
 	public:
 		virtual pns::Uint Run()
@@ -36,37 +36,32 @@ void TestMyThread()
 			return printCount;
 		}
 	};
-	MyLog::LogPlain("开始线程测试");
+	Log::LogPlain("开始线程测试");
 	TestThread tt;
 	if (tt.Start())
 	{
-		MyLog::LogPlain("线程ID: %d", tt.ThreadId());
+		Log::LogPlain("线程ID: %d", tt.ThreadId());
 	}
 
 	getchar();
 	if (tt.Suspend())
 	{
-		MyLog::LogPlain("线程暂停成功");
+		Log::LogPlain("线程暂停成功");
 	}
 
 	getchar();
 	if (tt.Resume())
 	{
-		MyLog::LogPlain("线程恢复成功");
+		Log::LogPlain("线程恢复成功");
 	}
 
 	getchar();
 	if (tt.Join())
 	{
-		MyLog::LogPlain("线程停止成功");
+		Log::LogPlain("线程停止成功");
 	}
 	getchar();
-	MyLog::LogPlain("停止线程测试");
-}
-
-void TestMySingleton()
-{
-	MySingleton * singleton = MySingleton::GetInstance();
+	Log::LogPlain("停止线程测试");
 }
 
 int main()
@@ -75,7 +70,6 @@ int main()
 	TestMyLog();
 	TestMySynch();
 	TestMyThread();
-	TestMySingleton();
 
 	getchar();
 	return 0;

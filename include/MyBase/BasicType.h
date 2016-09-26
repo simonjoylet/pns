@@ -4,6 +4,8 @@
 /**
 * 这里定义基本数据类型，以适应不同的平台。
 */
+namespace pns
+{
 
 typedef void Void;
 typedef bool Bool;
@@ -15,5 +17,8 @@ typedef int Int;
 typedef unsigned int Uint;
 typedef __int64 Long;
 typedef unsigned __int64 Ulong;
+
+
+} // namesapce pns
 
 #endif//MY_BASIC_TYPE_H

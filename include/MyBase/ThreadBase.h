@@ -1,11 +1,18 @@
 #ifndef MY_THREAD_BASE_H
 #define MY_THREAD_BASE_H
 
-class MY_BASE_API MyThreadBase
+#include <windows.h>
+#include "MyBase/MyBaseAPI.h"
+#include "MyBase/BasicType.h"
+
+namespace pns
+{
+
+class MY_BASE_API ThreadBase
 {
 public:
-	MyThreadBase();
-	virtual ~MyThreadBase();
+	ThreadBase();
+	virtual ~ThreadBase();
 
 	// 启动线程
 	virtual pns::Bool Start(pns::Bool isSuspend = false);
@@ -35,8 +42,8 @@ public:
 
 private:
 	// 不允许拷贝
-	MyThreadBase(const MyThreadBase &);
-	MyThreadBase & operator=(const MyThreadBase &);
+	ThreadBase(const ThreadBase &);
+	ThreadBase & operator=(const ThreadBase &);
 
 protected:
 	pns::Bool m_toStop;
@@ -47,5 +54,6 @@ protected:
 	HANDLE m_threadHandle;
 };
 
+} // namespace pns
 
 #endif//MY_THREAD_BASE_H

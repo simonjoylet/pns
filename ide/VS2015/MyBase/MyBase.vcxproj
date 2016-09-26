@@ -20,19 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\MyBase\MyBase.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MyBasicType.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MyDynamicArray.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MyLog.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MySingleton.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MySynch.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MyThreadBase.h" />
+    <ClInclude Include="..\..\..\include\MyBase\MyBaseAPI.h" />
+    <ClInclude Include="..\..\..\include\MyBase\BasicType.h" />
+    <ClInclude Include="..\..\..\include\MyBase\DynamicArray.h" />
+    <ClInclude Include="..\..\..\include\MyBase\Log.h" />
+    <ClInclude Include="..\..\..\include\MyBase\Synch.h" />
+    <ClInclude Include="..\..\..\include\MyBase\ThreadBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp" />
-    <ClCompile Include="..\..\..\src\MyBase\MyDynamicArray.cpp" />
-    <ClCompile Include="..\..\..\src\MyBase\MyLog.cpp" />
-    <ClCompile Include="..\..\..\src\MyBase\MySingleton.cpp" />
-    <ClCompile Include="..\..\..\src\MyBase\MyThreadBase.cpp" />
+    <ClCompile Include="..\..\..\src\MyBase\DynamicArray.cpp" />
+    <ClCompile Include="..\..\..\src\MyBase\Log.cpp" />
+    <ClCompile Include="..\..\..\src\MyBase\ThreadBase.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6916972E-8BEF-4171-BE9A-A51539B3E658}</ProjectGuid>

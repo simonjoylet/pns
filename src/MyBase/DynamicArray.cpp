@@ -1,5 +1,5 @@
 #define MY_BASE_API __declspec(dllexport)
-#include "MyBase/MyBase.h"
+#include "MyBase/DynamicArray.h"
 using namespace pns;
 
 

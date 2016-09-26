@@ -1,28 +1,18 @@
 #ifndef MY_BASE_H
 #define MY_BASE_H
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <time.h>
+#include "MyBase/MyBaseAPI.h"
 
-#ifndef MY_BASE_API
-#define MY_BASE_API __declspec(dllimport)
-#endif
+class MyLog;
+class MyThreadBase;
+class MyDynamicArray;
 
-namespace pns
-{
-	class MyLog;
-	class MyThreadBase;
-	class MyDynamicArray;
-	class MySingleton;
+#include "MyBase/BasicType.h"
+#include "MyBase/Log.h"
+#include "MyBase/Synch.h"
+#include "MyBase/ThreadBase.h"
+#include "MyBase/DynamicArray.h"
 
-#include "MyBase/MyBasicType.h"
-#include "MyBase/MyLog.h"
-#include "MyBase/MySynch.h"
-#include "MyBase/MyThreadBase.h"
-#include "MyBase/MyDynamicArray.h"
-#include "MyBase/MySingleton.h"
 
-};
 
 #endif//MY_BASE_H
