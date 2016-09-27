@@ -2,7 +2,7 @@
 #include "MyBase/Log.h"
 using namespace pns;
 
-pns::Int Log::LogPlain(const pns::Char * format, ...)
+int32_t Log::LogPlain(const pns::Char * format, ...)
 {
 	Int rst = 0;
 	va_list arglist;
@@ -13,7 +13,7 @@ pns::Int Log::LogPlain(const pns::Char * format, ...)
 	return rst;
 }
 
-pns::Int Log::LogWarning(const pns::Char * format, ...)
+int32_t Log::LogWarning(const pns::Char * format, ...)
 {
 	printf("[WARNING]: ");
 
@@ -26,7 +26,7 @@ pns::Int Log::LogWarning(const pns::Char * format, ...)
 	return rst;
 }
 
-pns::Int Log::LogError(const pns::Char * format, ...)
+int32_t Log::LogError(const pns::Char * format, ...)
 {
 	printf("[ERROR]: ");
 
@@ -39,7 +39,7 @@ pns::Int Log::LogError(const pns::Char * format, ...)
 	return rst;
 }
 
-pns::Int Log::LogDebug(const pns::Char * format, ...)
+int32_t Log::LogDebug(const pns::Char * format, ...)
 {
 	printf("[DEBUG]: ");
 

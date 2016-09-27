@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\MyBase\MyBase.h" />
     <ClInclude Include="..\..\..\include\MyBase\MyBaseAPI.h" />
-    <ClInclude Include="..\..\..\include\MyBase\BasicType.h" />
     <ClInclude Include="..\..\..\include\MyBase\DynamicArray.h" />
     <ClInclude Include="..\..\..\include\MyBase\Log.h" />
     <ClInclude Include="..\..\..\include\MyBase\Synch.h" />

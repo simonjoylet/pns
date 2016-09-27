@@ -1,7 +1,7 @@
 #ifndef MY_THREAD_BASE_H
 #define MY_THREAD_BASE_H
 
-#include <windows.h>
+#include <stdint.h>
 #include "MyBase/MyBaseAPI.h"
 #include "MyBase/BasicType.h"
 
@@ -15,30 +15,30 @@ public:
 	virtual ~ThreadBase();
 
 	// 启动线程
-	virtual pns::Bool Start(pns::Bool isSuspend = false);
+	virtual bool Start(bool isSuspend = false);
 
 	// 通知线程自行退出，可能无法成功终止线程
 	// waitTime为等待时间，单位ms，负数表示等待时间无限长
-	virtual pns::Bool Join(pns::Int waitTime = -1);
+	virtual bool Join(int32_t waitTime = -1);
 
 	// 强行停止线程
-	virtual pns::Bool Stop();
+	virtual bool Stop();
 	
 	// 挂起
-	virtual pns::Bool Suspend();
+	virtual bool Suspend();
 
 	// 恢复
-	virtual pns::Bool Resume();
+	virtual bool Resume();
 
 	// 线程运行的入口点
-	virtual pns::Uint Run() = 0;
+	virtual uint32_t Run() = 0;
 	
 	// 线程状态获取函数
-	pns::Bool IsToStop() const { return m_toStop; }
-	pns::Bool IsStoped() const { return m_isStoped; }
-	pns::Bool IsSuspend() const { return m_isSuspend; }
-	pns::Bool IsRunning() const { return (!m_isStoped && !m_isSuspend); }
-	pns::Uint ThreadId() const { return m_threadId; }
+	bool IsToStop() const { return m_toStop; }
+	bool IsStoped() const { return m_isStoped; }
+	bool IsSuspend() const { return m_isSuspend; }
+	bool IsRunning() const { return (!m_isStoped && !m_isSuspend); }
+	uint32_t ThreadId() const { return m_threadId; }
 
 private:
 	// 不允许拷贝
@@ -46,12 +46,12 @@ private:
 	ThreadBase & operator=(const ThreadBase &);
 
 protected:
-	pns::Bool m_toStop;
-	pns::Bool m_isStoped;
-	pns::Bool m_isSuspend;
+	bool m_toStop;
+	bool m_isStoped;
+	bool m_isSuspend;
 
-	pns::Uint m_threadId;
-	HANDLE m_threadHandle;
+	uint32_t m_threadId;
+	void * m_threadHandle; // 使用不透明的void*避免引用windows.h
 };
 
 } // namespace pns

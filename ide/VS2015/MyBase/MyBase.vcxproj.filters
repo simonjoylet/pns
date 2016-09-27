@@ -21,9 +21,6 @@
     <ClInclude Include="..\..\..\include\MyBase\MyBaseAPI.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\MyBase\BasicType.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\MyBase\DynamicArray.h">
       <Filter>头文件</Filter>
     </ClInclude>

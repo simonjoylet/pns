@@ -1,6 +1,7 @@
 #ifndef MY_DYNAMIC_ARRAY_H
 #define MY_DYNAMIC_ARRAY_H
 
+#include <stdint.h>
 #include "MyBase/MyBaseAPI.h"
 #include "MyBase/BasicType.h"
 
@@ -26,21 +27,21 @@ private:
 	};
 
 	Items * m_array[2048];
-	pns::Uint m_size;
+	uint32_t m_size;
 
 public:
 	DynamicArray();
 	~DynamicArray();
 
 	// 设置数组大小
-	pns::Bool SetSize(pns::Int item_count, pns::Uint item_size);
-	pns::Bool Realloc(pns::Int item_count, pns::Uint item_size);
+	bool SetSize(int32_t item_count, uint32_t item_size);
+	bool Realloc(int32_t item_count, uint32_t item_size);
 
 	// 获取数组元素
-	void * operator [](pns::Int index);
+	void * operator [](int32_t index);
 
 	// 获取数组当前大小
-	pns::Uint Size();
+	uint32_t Size();
 };
 
 } // namespace pns

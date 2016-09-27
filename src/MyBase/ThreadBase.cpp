@@ -1,13 +1,14 @@
 #define MY_BASE_API __declspec(dllexport)
 #include "MyBase/ThreadBase.h"
 #include "MyBase/Log.h"
+#include <windows.h>
 #include <process.h>
 using namespace pns;
 
-pns::Uint __stdcall ThreadStartAddr(pns::Void * param)
+uint32_t __stdcall ThreadStartAddr(pns::Void * param)
 {
 	ThreadBase * theThread = (ThreadBase *)param;
-	pns::Uint exitCode = theThread->Run();
+	uint32_t exitCode = theThread->Run();
 	return exitCode;
 }
 
@@ -33,7 +34,7 @@ ThreadBase::~ThreadBase()
 	m_threadId = 0;
 }
 
-pns::Bool ThreadBase::Start(pns::Bool isSuspend)
+bool ThreadBase::Start(bool isSuspend)
 {
 	// 如果已经启动过了，就不再启动。
 	if (!m_isStoped)
@@ -74,7 +75,7 @@ pns::Bool ThreadBase::Start(pns::Bool isSuspend)
 	}
 }
 
-pns::Bool ThreadBase::Join(pns::Int waitTime /*= -1*/)
+bool ThreadBase::Join(int32_t waitTime /*= -1*/)
 {
 	// 判断线程当前状态
 	if (m_isStoped)
@@ -107,7 +108,7 @@ pns::Bool ThreadBase::Join(pns::Int waitTime /*= -1*/)
 	}
 }
 
-pns::Bool ThreadBase::Stop()
+bool ThreadBase::Stop()
 {
 	// 判断线程当前状态
 	if (m_isStoped)
@@ -136,7 +137,7 @@ pns::Bool ThreadBase::Stop()
 	return m_isStoped;
 }
 
-pns::Bool ThreadBase::Suspend()
+bool ThreadBase::Suspend()
 {
 	// 检查线程当前状态
 	if (m_isStoped)
@@ -163,7 +164,7 @@ pns::Bool ThreadBase::Suspend()
 	return m_isSuspend;
 }
 
-pns::Bool ThreadBase::Resume()
+bool ThreadBase::Resume()
 {
 	// 检查线程状态
 	if (m_isStoped)
