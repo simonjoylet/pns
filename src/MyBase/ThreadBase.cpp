@@ -1,6 +1,6 @@
 #define MY_BASE_API __declspec(dllexport)
 #include "MyBase/ThreadBase.h"
-#include "MyBase/Log.h"
+#include "MyBase/Logger.h"
 #include <windows.h>
 #include <process.h>
 using namespace pns;
@@ -63,7 +63,7 @@ bool ThreadBase::Start(bool isSuspend)
 		m_toStop = false;
 		m_threadId = 0;
 
-		Log::LogError("线程创建失败");
+		Logger::LogError("线程创建失败");
 
 		return false;
 	}
@@ -119,7 +119,7 @@ bool ThreadBase::Stop()
 	// 检查线程句柄
 	if (!m_threadHandle)
 	{
-		Log::LogError("线程句柄为空");
+		Logger::LogError("线程句柄为空");
 		return false;
 	}
 
@@ -142,7 +142,7 @@ bool ThreadBase::Suspend()
 	// 检查线程当前状态
 	if (m_isStoped)
 	{
-		Log::LogWarning("线程尚未启动");
+		Logger::LogWarning("线程尚未启动");
 		return false;
 	}
 	if (m_isSuspend)
@@ -153,7 +153,7 @@ bool ThreadBase::Suspend()
 	// 检查线程句柄
 	if (!m_threadHandle)
 	{
-		Log::LogError("线程句柄为空");
+		Logger::LogError("线程句柄为空");
 		return false;
 	}
 
@@ -169,20 +169,20 @@ bool ThreadBase::Resume()
 	// 检查线程状态
 	if (m_isStoped)
 	{
-		Log::LogWarning("线程尚未启动");
+		Logger::LogWarning("线程尚未启动");
 		return false;
 	}
 
 	if (!m_isSuspend)
 	{
-		Log::LogWarning("线程尚未暂停");
+		Logger::LogWarning("线程尚未暂停");
 		return false;
 	}
 
 	// 检查句柄
 	if (!m_threadHandle)
 	{
-		Log::LogError("线程句柄为空");
+		Logger::LogError("线程句柄为空");
 		return false;
 	}
 

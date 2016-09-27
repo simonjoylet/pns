@@ -1,8 +1,8 @@
 #define MY_BASE_API __declspec(dllexport)
-#include "MyBase/Log.h"
+#include "MyBase/Logger.h"
 using namespace pns;
 
-int32_t Log::LogPlain(const char * format, ...)
+int32_t Logger::LogPlain(const char * format, ...)
 {
 	int32_t rst = 0;
 	va_list arglist;
@@ -13,7 +13,7 @@ int32_t Log::LogPlain(const char * format, ...)
 	return rst;
 }
 
-int32_t Log::LogWarning(const char * format, ...)
+int32_t Logger::LogWarning(const char * format, ...)
 {
 	printf("[WARNING]: ");
 
@@ -26,7 +26,7 @@ int32_t Log::LogWarning(const char * format, ...)
 	return rst;
 }
 
-int32_t Log::LogError(const char * format, ...)
+int32_t Logger::LogError(const char * format, ...)
 {
 	printf("[ERROR]: ");
 
@@ -39,7 +39,7 @@ int32_t Log::LogError(const char * format, ...)
 	return rst;
 }
 
-int32_t Log::LogDebug(const char * format, ...)
+int32_t Logger::LogDebug(const char * format, ...)
 {
 	printf("[DEBUG]: ");
 

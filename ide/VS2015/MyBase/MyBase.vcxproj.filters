@@ -21,9 +21,6 @@
     <ClInclude Include="..\..\..\include\MyBase\DynamicArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\MyBase\Log.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\MyBase\Synch.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -36,6 +33,15 @@
     <ClInclude Include="..\..\..\include\MyBase\Common.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\MyBase\Random.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\MyBase\List.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\MyBase\Logger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp">
@@ -44,13 +50,10 @@
     <ClCompile Include="..\..\..\src\MyBase\DynamicArray.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\MyBase\Log.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\MyBase\ThreadBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\MyBase\SkipList.cpp">
+    <ClCompile Include="..\..\..\src\MyBase\Logger.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,7 +10,7 @@ namespace pns
 * 日志类，集中管理日志信息。
 */
 
-class MY_BASE_API Log
+class MY_BASE_API Logger
 {
 public:
 	static int32_t LogPlain(const char * format, ...);
