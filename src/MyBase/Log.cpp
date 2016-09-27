@@ -2,9 +2,9 @@
 #include "MyBase/Log.h"
 using namespace pns;
 
-int32_t Log::LogPlain(const pns::Char * format, ...)
+int32_t Log::LogPlain(const char * format, ...)
 {
-	Int rst = 0;
+	int32_t rst = 0;
 	va_list arglist;
 	va_start(arglist, format);
 	rst = vprintf(format, arglist);
@@ -13,11 +13,11 @@ int32_t Log::LogPlain(const pns::Char * format, ...)
 	return rst;
 }
 
-int32_t Log::LogWarning(const pns::Char * format, ...)
+int32_t Log::LogWarning(const char * format, ...)
 {
 	printf("[WARNING]: ");
 
-	Int rst = 0;
+	int32_t rst = 0;
 	va_list arglist;
 	va_start(arglist, format);
 	rst = vprintf(format, arglist);
@@ -26,11 +26,11 @@ int32_t Log::LogWarning(const pns::Char * format, ...)
 	return rst;
 }
 
-int32_t Log::LogError(const pns::Char * format, ...)
+int32_t Log::LogError(const char * format, ...)
 {
 	printf("[ERROR]: ");
 
-	Int rst = 0;
+	int32_t rst = 0;
 	va_list arglist;
 	va_start(arglist, format);
 	rst = vprintf(format, arglist);
@@ -39,11 +39,11 @@ int32_t Log::LogError(const pns::Char * format, ...)
 	return rst;
 }
 
-int32_t Log::LogDebug(const pns::Char * format, ...)
+int32_t Log::LogDebug(const char * format, ...)
 {
 	printf("[DEBUG]: ");
 
-	Int rst = 0;
+	int32_t rst = 0;
 	va_list arglist;
 	va_start(arglist, format);
 	rst = vprintf(format, arglist);

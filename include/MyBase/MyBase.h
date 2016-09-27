@@ -1,7 +1,7 @@
 #ifndef MY_BASE_H
 #define MY_BASE_H
 
-#include "MyBase/MyBaseAPI.h"
+#include "MyBase/Common.h"
 
 class MyLog;
 class MyThreadBase;
@@ -12,6 +12,7 @@ class MyDynamicArray;
 #include "MyBase/Synch.h"
 #include "MyBase/ThreadBase.h"
 #include "MyBase/DynamicArray.h"
+#include "MyBase/SkipList.h"
 
 
 

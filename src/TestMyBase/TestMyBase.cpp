@@ -1,7 +1,8 @@
 #include "MyBase/MyBase.h"
+#include "vld.h"
 using namespace pns;
 
-void TestMyLog()
+void Test_MyLog()
 {
 	// 测试MyLog
 	Log::LogDebug("This is a debug info");
@@ -9,7 +10,7 @@ void TestMyLog()
 	Log::LogPlain("人家只是一个普通的日志");
 }
 
-void TestMySynch()
+void Test_MySynch()
 {
 	// todo, 还没使用多线程进行测试
 	MUTEX mutex = NULL;
@@ -19,7 +20,7 @@ void TestMySynch()
 	MUTEX_DESTROY(mutex);
 }
 
-void TestMyThread()
+void Test_MyThread()
 {
 	class TestThread : public ThreadBase
 	{
@@ -64,12 +65,25 @@ void TestMyThread()
 	Log::LogPlain("停止线程测试");
 }
 
+void Test_SkipList()
+{
+	bool rst = false;
+	SkipList<int> sl;
+	rst = sl.Insert(1);
+	rst = sl.Insert(9);
+	rst = sl.Insert(5);
+	rst = sl.Contain(5);
+	rst = sl.Delete(5);
+	rst = sl.Contain(5);
+}
+
 int main()
 {
 	// todo, 使用GoogleTest
-	TestMyLog();
-	TestMySynch();
-	TestMyThread();
+// 	Test_MyLog();
+// 	Test_MySynch();
+// 	Test_MyThread();
+	Test_SkipList();
 
 	getchar();
 	return 0;

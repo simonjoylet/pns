@@ -1,9 +1,7 @@
 #ifndef MY_THREAD_BASE_H
 #define MY_THREAD_BASE_H
 
-#include <stdint.h>
-#include "MyBase/MyBaseAPI.h"
-#include "MyBase/BasicType.h"
+#include "MyBase/Common.h"
 
 namespace pns
 {

@@ -5,7 +5,7 @@
 #include <process.h>
 using namespace pns;
 
-uint32_t __stdcall ThreadStartAddr(pns::Void * param)
+uint32_t __stdcall ThreadStartAddr(void * param)
 {
 	ThreadBase * theThread = (ThreadBase *)param;
 	uint32_t exitCode = theThread->Run();

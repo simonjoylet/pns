@@ -20,9 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\MyBase\MyBase.h" />
-    <ClInclude Include="..\..\..\include\MyBase\MyBaseAPI.h" />
+    <ClInclude Include="..\..\..\include\MyBase\Common.h" />
     <ClInclude Include="..\..\..\include\MyBase\DynamicArray.h" />
     <ClInclude Include="..\..\..\include\MyBase\Log.h" />
+    <ClInclude Include="..\..\..\include\MyBase\SkipList.h" />
     <ClInclude Include="..\..\..\include\MyBase\Synch.h" />
     <ClInclude Include="..\..\..\include\MyBase\ThreadBase.h" />
   </ItemGroup>
@@ -30,6 +31,7 @@
     <ClCompile Include="..\..\..\src\MyBase\MyBase.cpp" />
     <ClCompile Include="..\..\..\src\MyBase\DynamicArray.cpp" />
     <ClCompile Include="..\..\..\src\MyBase\Log.cpp" />
+    <ClCompile Include="..\..\..\src\MyBase\SkipList.cpp" />
     <ClCompile Include="..\..\..\src\MyBase\ThreadBase.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

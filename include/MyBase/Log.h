@@ -1,11 +1,7 @@
 #ifndef MY_LOG_H
 #define MY_LOG_H
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include "MyBase/MyBaseAPI.h"
-#include "MyBase/BasicType.h"
+#include "MyBase/Common.h"
 
 namespace pns
 {
@@ -17,13 +13,13 @@ namespace pns
 class MY_BASE_API Log
 {
 public:
-	static int32_t LogPlain(const pns::Char * format, ...);
+	static int32_t LogPlain(const char * format, ...);
 
-	static int32_t LogWarning(const pns::Char * format, ...);
+	static int32_t LogWarning(const char * format, ...);
 
-	static int32_t LogError(const pns::Char * format, ...);
+	static int32_t LogError(const char * format, ...);
 
-	static int32_t LogDebug(const pns::Char * format, ...);
+	static int32_t LogDebug(const char * format, ...);
 };
 
 } // namesapce pns

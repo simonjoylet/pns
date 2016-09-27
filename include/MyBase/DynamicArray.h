@@ -1,9 +1,7 @@
 #ifndef MY_DYNAMIC_ARRAY_H
 #define MY_DYNAMIC_ARRAY_H
 
-#include <stdint.h>
-#include "MyBase/MyBaseAPI.h"
-#include "MyBase/BasicType.h"
+#include "MyBase/Common.h"
 
 namespace pns
 {
