@@ -171,17 +171,23 @@ typename SkipList<Key>::Node * SkipList<Key>::FindGE(Key k, Node ** prev) const
 	Node * cur = m_head;
 	while (--level >= 0)
 	{
-		while (cur->Next(level) && cur->Next(level)->key < k)
+		while (true)
 		{
-			cur = cur->Next(level);
+			// 当前高度如果next->key都比 k 要小，则cur要一直往后跳。
+			Node * next = cur->Next(level);
+			if (next && next->key < k)
+			{
+				cur = next;
+			}			
 		}
+		// 当前高度next->key >= k
 		if (prev != NULL)
 		{
 			prev[level] = cur;
 		}
 	}
 
-	return cur->Next(0);
+	return cur->Next(0); // 最底层的链表的下一个
 }
 
 #endif//SKIPLIST_H
