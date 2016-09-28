@@ -80,6 +80,10 @@ void Test_SkipList()
 	bool rst = false;
 	SkipList<int> sl;
 	rst = sl.Insert(1);
+	rst = sl.Contain(0);
+	rst = sl.Insert(0);
+	rst = sl.Contain(0);
+	rst = sl.Insert(-1);
 	rst = sl.Insert(9);
 	rst = sl.Insert(5);
 	rst = sl.Contain(5);

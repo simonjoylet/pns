@@ -90,7 +90,7 @@ SkipList<Key>::SkipList()
 	, m_count(0)
 	, m_random(0xdeadbeef)
 {
-	m_head = new Node(kMaxHeight, Key());
+	m_head = new Node(kMaxHeight, 0);
 }
 
 template<typename Key>
