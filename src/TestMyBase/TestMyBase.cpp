@@ -8,6 +8,7 @@
 #include <time.h>
 #include <vector>
 #include <set>
+//#include <excpt.h>
 
 using namespace pns;
 
@@ -176,13 +177,37 @@ void Test_SkipList()
 	
 }
 
+LONG WINAPI Myhandler(EXCEPTION_POINTERS *ep)
+{
+	printf("%s\n", filterCrash(ep).c_str());
+	return EXCEPTION_EXECUTE_HANDLER;
+}
+
+void Test_ExceptionHandler()
+{
+	__try
+	{
+		AccessNull();
+	}
+	__except (Myhandler(GetExceptionInformation()))
+	{
+		int a = 0;
+	}
+	// 实验发现，这个版本的堆栈打印不太完整，堆栈最顶层的函数没打出来。
+	// 但是，这个版本的输出还是挺好看的。
+}
+
+
+
 int main()
 {
 	// todo, 使用GoogleTest
 // 	Test_MyLog();
 // 	Test_MySynch();
 // 	Test_MyThread();
-	Test_SkipList();
+//	Test_SkipList();
+	Test_ExceptionHandler();
+	
 
 	getchar();
 	_CrtDumpMemoryLeaks();

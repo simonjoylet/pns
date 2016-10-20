@@ -15,6 +15,7 @@ class MyDynamicArray;
 #include "MyBase/SkipList.h"
 #include "MyBase/Random.h"
 #include "MyBase/List.h"
+#include "MyBase/ExceptionHandler.h"
 
 
 
