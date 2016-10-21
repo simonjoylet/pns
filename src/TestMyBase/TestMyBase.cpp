@@ -177,37 +177,27 @@ void Test_SkipList()
 	
 }
 
-LONG WINAPI Myhandler(EXCEPTION_POINTERS *ep)
-{
-	printf("%s\n", filterCrash(ep).c_str());
-	return EXCEPTION_EXECUTE_HANDLER;
-}
-
 void Test_ExceptionHandler()
 {
-	__try
-	{
-		AccessNull();
-	}
-	__except (Myhandler(GetExceptionInformation()))
-	{
-		int a = 0;
-	}
-	// 实验发现，这个版本的堆栈打印不太完整，堆栈最顶层的函数没打出来。
-	// 但是，这个版本的输出还是挺好看的。
+	int * tmp = NULL;
+	*tmp = 1;
+
+	// Comment: Release模式下由于编译器的优化，堆栈打印不到这一层。
+	//			只要把C++优化选项的“使速度最大化”改为禁用即可。
+	//			猜测是由于编译器把这种较短的函数优化为内联函数了，从而减少一层调用栈。
 }
 
 
 
 int main()
 {
+	InstallExceptionHandler();
 	// todo, 使用GoogleTest
 // 	Test_MyLog();
 // 	Test_MySynch();
 // 	Test_MyThread();
 //	Test_SkipList();
 	Test_ExceptionHandler();
-	
 
 	getchar();
 	_CrtDumpMemoryLeaks();
